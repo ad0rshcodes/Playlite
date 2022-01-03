@@ -8,9 +8,12 @@ import {
 
 const Player = ({ currentSong, isPlaying, setIsPlaying }) => {
   const audioRef = useRef(null);
+  const changePlay = useRef(null);
   const playBackward = () => {};
   const play = () => {
     if (!isPlaying) {
+      // console.log(audioRef);
+      console.log(changePlay);
       audioRef.current.play();
       setIsPlaying(true);
     } else {
@@ -33,11 +36,22 @@ const Player = ({ currentSong, isPlaying, setIsPlaying }) => {
     let sec = Math.floor(time) - 60 * min;
     return `${min}:${("0" + sec).slice(-2)}`;
   };
+  const dragHandler = (e) => {
+    audioRef.current.currentTime = e.target.value;
+    const current = e.target.value;
+    setSongInfo({ ...songInfo, currentTime: current });
+  };
   return (
     <div className="player">
       <div className="time-control">
         <p>{getTime(songInfo.currentTime)}</p>
-        <input type="range" />
+        <input
+          type="range"
+          min={0}
+          max={songInfo.duration}
+          value={songInfo.currentTime}
+          onChange={dragHandler}
+        />
         <p>{getTime(songInfo.duration)}</p>
       </div>
       <div className="play-control">
@@ -47,6 +61,7 @@ const Player = ({ currentSong, isPlaying, setIsPlaying }) => {
           icon={faPlay}
           size="2x"
           onClick={play}
+          ref={changePlay}
         />
         <FontAwesomeIcon
           className="skip-forward"
