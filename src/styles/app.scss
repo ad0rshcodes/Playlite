@@ -2,13 +2,21 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Spartan", sans-serif;
 }
 
 h1,
 h2,
-h3 {
+h3,
+h4 {
   color: rgb(44, 43, 43);
+}
+
+h3,
+h4 {
+  color: rgb(107, 109, 109);
 }
 
 @import "./song";
 @import "./player";
+@import "./library";

@@ -3,17 +3,22 @@ import Player from "./components/Player";
 import Song from "./components/Song";
 import "./styles/app.scss";
 import data from "./util";
+import LibrarySong from "./components/LibrarySong";
+import Library from "./components/Library";
 function App() {
-  const [song, setSong] = useState(data());
-  const [currentSong, setCurrentSong] = useState(song[0]);
+  const [songs, setSongs] = useState(data());
+  const [currentSong, setCurrentSong] = useState(songs[2]);
+  const [isPlaying, setIsPlaying] = useState(false);
+
   return (
     <div className="App">
-      <Song
-        image={currentSong.cover}
-        name={currentSong.name}
-        artist={currentSong.artist}
+      <Song currentSong={currentSong} />
+      <Player
+        currentSong={currentSong}
+        isPlaying={isPlaying}
+        setIsPlaying={setIsPlaying}
       />
-      <Player />
+      <Library songs={songs} />
     </div>
   );
 }
