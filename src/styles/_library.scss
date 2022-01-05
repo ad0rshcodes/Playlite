@@ -9,7 +9,7 @@
     padding: 1rem;
   }
   box-shadow: 2px 2px 40px #d3d1d1;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .library-song {
@@ -29,8 +29,36 @@
   padding: 0.5rem;
   h3 {
     font-size: 1rem;
+    margin-bottom: 0.3rem;
   }
   h4 {
     font-size: 0.7rem;
   }
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(160, 160, 160, 0.5) transparent;
+}
+
+// Width
+*::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track where the scroll bar is movable */
+*::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 10px;
+}
+
+/* Handle: Movable part of the scroll bar */
+*::-webkit-scrollbar-thumb {
+  background: rgb(160, 160, 160);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+*::-webkit-scrollbar-thumb:hover {
+  background: rgb(122, 122, 122);
 }
