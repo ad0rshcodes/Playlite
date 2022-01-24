@@ -47,12 +47,12 @@ const Player = ({ currentSong, isPlaying, setIsPlaying }) => {
         <p>{getTime(songInfo.currentTime)}</p>
         <input
           type="range"
-          max={songInfo.duration}
+          max={songInfo.duration || 0}
           min={0}
           value={songInfo.currentTime}
           onChange={dragHandler}
         />
-        <p>{getTime(songInfo.duration)}</p>
+        <p>{getTime(songInfo.duration) || 0}</p>
       </div>
       <div className="play-control">
         <FontAwesomeIcon
